@@ -1,0 +1,48 @@
+.login-principal-container {
+  margin-top: 2%;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-bottom: 50px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.login-buttons {
+  margin-top: 35px;
+}
+
+.login-is-danger {
+  background: #000; 
+  color: #fff;
+  padding: 16px;
+  margin-bottom: 16px;
+  margin-top: 16px;
+
+  animation-duration: 2s;
+  animation-iteration-count: initial;
+  animation-name: jackInTheBox;
+}
+
+.danger-man {
+  width: 120px;
+}
+
+.danger-man-container {
+  margin-bottom: 10px;
+}
+
+.recover-container {
+  margin-top: 10px;
+}
+
+.recover-img {
+  width: 26px;
+  cursor: pointer;
+}
+
+.login-img-icon {
+  width: 22px;
+}
+
+.login-logo {
+  width: 275px;
+}

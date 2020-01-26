@@ -1,0 +1,63 @@
+@font-face {
+  font-family: tlozbotw-font;
+  src: url('../font/tlozbotw.otf');
+}
+
+@font-face {
+  font-family: Nunito;
+  src: url('../font/Nunito-Regular.ttf');
+}
+
+@font-face {
+  font-family: Medula One;
+  src: url('../font/MedulaOne-Regular.ttf');
+}
+
+body {
+  margin: 0;
+  font-family: 'Nunito', sans-serif;
+  letter-spacing: 0.073125em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: url('../img/white.jpg');
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+hr {
+  background: url('../svg/divider-blue.svg');
+  height: 10px;
+  box-shadow: 0 4px 8px 0 #139dff3b, 0 6px 20px 0 #139dff3b;
+}
+
+h1 {
+  font-family: 'Medula One', cursive;
+  font-size: 60px;
+  text-shadow: 2px 2px 8px rgba(19, 157, 255, 0.411);
+  color: #139eff;
+}
+
+h2 {
+  font-family: 'Medula One', cursive;
+}
+
+.css-yk16xz-control {
+  background: transparent !important;
+}
+
+.css-1pahdxg-control {
+  background: transparent !important;
+}
+
+.login-animation {
+  animation-duration: 1s;
+  animation-iteration-count: initial;
+  animation-name: jackInTheBox;
+}
