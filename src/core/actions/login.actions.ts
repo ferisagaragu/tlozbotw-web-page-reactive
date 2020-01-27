@@ -1,10 +1,10 @@
 import { Action, alert, toast } from 'reactive';
 import { UserReducerEnum } from '../enums/user-reducer.enum';
-import UserService from '../http/user.service';
+import LoginService from '../http/login.service';
 import { UserModel } from '../models/user.model';
 
 
-const userService: UserService = new UserService();
+const loginService: LoginService = new LoginService();
 
 export function setUserData(payload: any): Action {
   return { type: UserReducerEnum.SET_USER_DATA, payload };
@@ -21,7 +21,7 @@ export function setLoginLoad(payload: any) {
 export function login(email:string, password: string): Function {
   return async (dispatch: Function) => {
     dispatch(setLoginLoad(true));
-    userService.login(email, password, 
+    loginService.login(email, password, 
       (userData: any) => {
         const user: UserModel = new UserModel(userData.data);
         dispatch(setUserData(user));
@@ -34,5 +34,11 @@ export function login(email:string, password: string): Function {
         alert('error', error.message, '');
       }
     );
+  }
+}
+
+export function recoverPassword(email: string): Function {
+  return async (dispatch: Function) => {
+    
   }
 }

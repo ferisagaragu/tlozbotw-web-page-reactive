@@ -1,6 +1,6 @@
 import { axiosInstance } from '../../config/app.config';
 
-class UserService {
+class LoginService {
 
   public login(email: string, password: string, onSuccess: Function, onError: Function): void {
 
@@ -22,4 +22,4 @@ class UserService {
 
 }
 
-export default UserService;
+export default LoginService;

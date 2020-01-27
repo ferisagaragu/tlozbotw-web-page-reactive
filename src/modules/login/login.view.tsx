@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { FormLoginComponent } from './form-login/form-login.component';
 import { Container, Row, connect } from 'reactive';
-import { login } from '../../core/actions/user.actions';
+import { login } from '../../core/actions/login.actions';
 import { FormRecoverPasswordComponent } from './from-recover-password/from-recover-password.component';
 
 interface Props {

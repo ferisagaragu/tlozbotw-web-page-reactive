@@ -1,8 +1,4 @@
 import React, { Component } from 'react';
-import bidKey from '../../../styles/img/big-key.png';
-import dangerMan from '../../../styles/img/danger-man.png';
-import sword from '../../../styles/img/sword.png';
-import link from '../../../styles/img/link.png';
 import { 
   Card, 
   reduxForm, 
@@ -13,10 +9,14 @@ import {
   Space, 
   Row
 } from 'reactive';
-import "./form-login.css";
-import { FormLoginReducerEnum } from '../../../core/enums/form-login-reducer';
-import logo from '../../../styles/animation/login-logo.gif';
 import LoadingComponent from '../../../shared/loading/loading.component';
+import { FormLoginReducerEnum } from '../../../core/enums/form-login-reducer';
+import bidKey from '../../../styles/img/big-key.png';
+import dangerMan from '../../../styles/img/danger-man.png';
+import sword from '../../../styles/img/sword.png';
+import link from '../../../styles/img/link.png';
+import logo from '../../../styles/animation/login-logo.gif';
+import "./form-login.css";
 
 interface Props { 
   initialValues: any;
