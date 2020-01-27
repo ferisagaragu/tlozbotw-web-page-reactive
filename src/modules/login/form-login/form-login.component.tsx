@@ -3,7 +3,6 @@ import bidKey from '../../../styles/img/big-key.png';
 import dangerMan from '../../../styles/img/danger-man.png';
 import sword from '../../../styles/img/sword.png';
 import link from '../../../styles/img/link.png';
-import logo from '../../../styles/animation/login-logo.gif';
 import { 
   Card, 
   reduxForm, 
@@ -12,18 +11,22 @@ import {
   GradientButton, 
   Col, 
   Space, 
-  Row 
+  Row
 } from 'reactive';
 import "./form-login.css";
 import { FormLoginReducerEnum } from '../../../core/enums/form-login-reducer';
+import logo from '../../../styles/animation/login-logo.gif';
+import LoadingComponent from '../../../shared/loading/loading.component';
 
 interface Props { 
   initialValues: any;
   handleSubmit: any;
-  cancel: any;
   submitting: any;
   islostPassword: boolean;
+  isLoading: boolean;
   submitActions: Function;
+  onRecoverPassword: Function;
+  onRegist: Function;
 }
 
 interface State { }
@@ -32,7 +35,15 @@ interface State { }
 class FormLogin extends Component<Props, State> {
 
   render() {
-    const { handleSubmit, submitActions, submitting, islostPassword } = this.props;
+    const { 
+      handleSubmit, 
+      submitActions, 
+      submitting, 
+      islostPassword, 
+      isLoading, 
+      onRecoverPassword, 
+      onRegist 
+    } = this.props;
 
     return(
       <Card className="col-md-5 login-principal-container">
@@ -79,39 +90,47 @@ class FormLogin extends Component<Props, State> {
                     className="recover-img" 
                     src={ sword }
                     alt="recover sword"
-                    onClick={ () => { console.log('dio click') } } 
+                    onClick={ () => onRecoverPassword() } 
                   />
                 </Col>
               </Row>
           }
 
           <Col className="text-center login-buttons" md={ 12 }>
-            <GradientButton
-              className="mr-3"
-              variant="ligthBlue-blue"
-            > 
-              <img 
-                className="login-img-icon" 
-                src={ link } 
-                alt="link zelda" 
-              />
-              <Space spaces={ 2 }/>
-              Registrar usuario
-            </GradientButton>
+            {
+              isLoading ? 
+                <LoadingComponent />
+              :
+                <>
+                  <GradientButton
+                    className="mr-3"
+                    variant="ligthBlue-blue"
+                    onClick={ () => onRegist() }
+                  > 
+                    <img 
+                      className="login-img-icon" 
+                      src={ link } 
+                      alt="link zelda" 
+                    />
+                    <Space spaces={ 2 }/>
+                    Registrar usuario
+                  </GradientButton>
 
-            <GradientButton 
-              variant="green-ligthGreen"
-              type="submit"
-              disabled={ submitting }
-            >
-              <img 
-                className="login-img-icon" 
-                src={ bidKey } 
-                alt="big key" 
-              />
-              <Space spaces={ 2 }/>
-              Iniciar sesión
-            </GradientButton>
+                  <GradientButton 
+                    variant="green-ligthGreen"
+                    type="submit"
+                    disabled={ submitting }
+                  >
+                    <img 
+                      className="login-img-icon" 
+                      src={ bidKey } 
+                      alt="big key" 
+                    />
+                    <Space spaces={ 2 }/>
+                    Iniciar sesión
+                  </GradientButton>
+                </>
+            }
           </Col>
         </form>
       </Card>

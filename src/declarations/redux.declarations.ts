@@ -1,15 +1,17 @@
 import { combineReducers, reducer, windowSize } from 'reactive';
-import { userData, lostPassword } from '../core/reducers/user-data.reducers';
+import { userData, lostPassword, loginLoad } from '../core/reducers/user-data.reducers';
 
 export const reducers = combineReducers({
   form: reducer,
   windowSize,
   userData,
-  lostPassword
+  lostPassword,
+  loginLoad
 });
 
 export const initState = { 
   userData: null,
   lostPassword: false,
+  loginLoad: false,
   windowSize: "xm"
 };
