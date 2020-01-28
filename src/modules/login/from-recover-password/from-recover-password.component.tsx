@@ -8,7 +8,7 @@ import {
   Col, 
   Space
 } from 'reactive';
-import { FormRecoverPasswordReducerEnum } from '../../../core/enums/form-recover-password-reducer';
+import { FormRecoverPasswordReducerEnum } from '../../../core/enums/form-recover-password-reducer.enum';
 import LoadingComponent from '../../../shared/loading/loading.component';
 import shieldPixel from '../../../styles/img/shield-pixel.png';
 import heartPixel from '../../../styles/img/heart-pixel-emply.png';
@@ -18,7 +18,6 @@ interface Props {
   initialValues: any;
   handleSubmit: any;
   submitting: any;
-  islostPassword: boolean;
   isLoading: boolean;
   submitActions: Function;
   onCancel: Function;
@@ -45,10 +44,11 @@ class FormRecoverPassword extends Component<Props, State> {
           <Col className="mt-4 mb-4">
             <Field 
               className="form-control"
-              name="recoverPassword"
+              name="email"
               type="email"
               component={ RenderTextField }
-              label="Email de recuperacion"
+              label="Correo electronico de recuperacion"
+              disabled={ isLoading }
             />
           </Col>
 
@@ -98,16 +98,11 @@ class FormRecoverPassword extends Component<Props, State> {
 
 const validate = (values: any) => {
   const errors = { 
-    email: '',
-    password: ''
+    email: ''
   }
 
   if (!values.email) {
-    errors.email = 'El nombre de usuario, correo electronico o telefono es requerido'
-  }
-
-  if (!values.password) {
-    errors.password = 'La contraseña es requerida'
+    errors.email = 'El correo electronico es requerido'
   }
 
   return errors;

@@ -14,10 +14,3 @@ export const lostPassword = (state = {}, action: Action) => {
     default: return state;
   }
 }
-
-export const loginLoad = (state = {}, action: Action) => {
-  switch(action.type) {
-    case UserReducerEnum.SET_LOGIN_LOAD: return action.payload;
-    default: return state;
-  }
-}

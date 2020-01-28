@@ -10,7 +10,7 @@ import {
   Row
 } from 'reactive';
 import LoadingComponent from '../../../shared/loading/loading.component';
-import { FormLoginReducerEnum } from '../../../core/enums/form-login-reducer';
+import { FormLoginReducerEnum } from '../../../core/enums/form-login-reducer.enum';
 import bidKey from '../../../styles/img/big-key.png';
 import dangerMan from '../../../styles/img/danger-man.png';
 import sword from '../../../styles/img/sword.png';
@@ -63,6 +63,7 @@ class FormLogin extends Component<Props, State> {
             type="email"
             component={ RenderTextField }
             label="Nombre de usuario, correo electronico o telefono"
+            disabled={ isLoading }
           />
 
           <Field 
@@ -71,6 +72,7 @@ class FormLogin extends Component<Props, State> {
             type="password"
             component={ RenderTextField }
             label="Contraseña"
+            disabled={ isLoading }
           />
 
           {
