@@ -3,6 +3,7 @@ import { FormLoginComponent } from './form-login/form-login.component';
 import { Container, Row, connect } from 'reactive';
 import { login, recoverPassword } from '../../core/actions/login.action';
 import { FormRecoverPasswordComponent } from './from-recover-password/from-recover-password.component';
+import { FormSignUpComponent } from './from-sign-up/from-sign-up.component';
 
 interface Props {
   lostPassword: boolean;
@@ -22,7 +23,7 @@ class LoginView extends Component<Props, State> {
     super(props);
 
     this.state = {
-      showForm: 2
+      showForm: 0
     };
   }
 
@@ -35,9 +36,11 @@ class LoginView extends Component<Props, State> {
         <Row className="justify-content-md-center login-animation">
           {
             showForm === 0 && 
-              <>
-                Registrar
-              </>
+              <FormSignUpComponent 
+                submitActions={ (formData: any) => { console.log(formData) } }
+                onCancel={ () => { this.setState({ showForm: 1 }); } }
+                isLoading={ loading }
+              />
           }
 
           {
