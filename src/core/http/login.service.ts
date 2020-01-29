@@ -1,4 +1,6 @@
 import { axiosInstance } from '../../config/app.config';
+import { UserModel } from '../models/user.model';
+import { GeneralMessageEnum } from '../enums/message.enum';
 
 class LoginService {
 
@@ -30,6 +32,24 @@ class LoginService {
       onSuccess(resp.data);
     }).catch(function (error: any) {
       onError(error.response.data);
+    });
+  }
+
+  public signUp(data: UserModel, onSuccess: Function, onError: Function) {
+    axiosInstance.post('/auth/sign-up', {
+      ...data
+    },{ 
+      headers: {
+        Authorization: `${sessionStorage.getItem('type')} ${sessionStorage.getItem('token')}`
+      } 
+    }).then(function (resp: any) {
+      onSuccess(resp.data);
+    }).catch(function (error: any) {
+      if (!error.response) {
+        onError({ message: GeneralMessageEnum.SERVER_ERROR });
+      } else {
+        onError(error.response.data);
+      }
     });
   }
 

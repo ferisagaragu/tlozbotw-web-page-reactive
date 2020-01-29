@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
 import { FormLoginComponent } from './form-login/form-login.component';
 import { Container, Row, connect } from 'reactive';
-import { login, recoverPassword } from '../../core/actions/login.action';
+import { login, recoverPassword, signUp } from '../../core/actions/login.action';
 import { FormRecoverPasswordComponent } from './from-recover-password/from-recover-password.component';
 import { FormSignUpComponent } from './from-sign-up/from-sign-up.component';
+import { UserModel } from '../../core/models/user.model';
 
 interface Props {
   lostPassword: boolean;
   loading: boolean;
   login: Function;
   recoverPassword: Function;
+  signUp: Function;
 }
 
 interface State {
@@ -28,7 +30,7 @@ class LoginView extends Component<Props, State> {
   }
 
   render() {
-    const { login, lostPassword, loading, recoverPassword } = this.props;
+    const { login, lostPassword, loading, recoverPassword, signUp } = this.props;
     const { showForm } = this.state;
 
     return(
@@ -37,7 +39,7 @@ class LoginView extends Component<Props, State> {
           {
             showForm === 0 && 
               <FormSignUpComponent 
-                submitActions={ (formData: any) => { console.log(formData) } }
+                submitActions={ (formData: UserModel) => signUp(formData) }
                 onCancel={ () => { this.setState({ showForm: 1 }); } }
                 isLoading={ loading }
               />
@@ -47,7 +49,7 @@ class LoginView extends Component<Props, State> {
             showForm === 1 &&
               <FormLoginComponent
                 submitActions={ (formData: any) => login(formData) }
-                onRegist={ () => { console.log('cancelo') } }
+                onRegist={ () => this.setState({ showForm: 0 }) }
                 onRecoverPassword={ () => this.setState({ showForm: 2 }) }
                 islostPassword={ lostPassword }
                 isLoading={ loading }
@@ -76,7 +78,8 @@ const mapStateToProps = (state: any) => ({
 
 const mapDispatchToProps = (dispatch: Function) => ({
   login: (formData: any) => dispatch(login(formData.email, formData.password)),
-  recoverPassword: (FormData: any) => dispatch(recoverPassword(FormData.email))
+  recoverPassword: (formData: any) => dispatch(recoverPassword(formData.email)),
+  signUp: (formData: UserModel) => dispatch(signUp(formData))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginView);

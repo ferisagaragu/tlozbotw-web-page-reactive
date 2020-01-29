@@ -13,10 +13,10 @@ import {
 } from 'reactive';
 import LoadingComponent from '../../../shared/loading/loading.component';
 import { FormSignUpReducerEnum } from '../../../core/enums/form-sign-up-reducer.enum';
-import bidKey from '../../../styles/img/big-key.png';
+import { UserModel } from '../../../core/models/user.model';
+import heartPixel from '../../../styles/img/heart-pixel-emply.png';
 import link from '../../../styles/img/link.png';
 import "./from-sign-up.css";
-
 
 interface Props { 
   initialValues: any;
@@ -49,8 +49,8 @@ class FormSignUp extends Component<Props, State> {
     const { fileLoad } = this.state;
 
     if (fileLoad && (Math.trunc((fileLoad.size ? fileLoad.size : 0) / 1024) < 3000)) {
-      formValues.photoURL = fileLoad; 
-      submitActions(formValues);
+      formValues.imageUrl = fileLoad; 
+      submitActions(new UserModel(formValues));
     }
   }
 
@@ -80,6 +80,7 @@ class FormSignUp extends Component<Props, State> {
               preview={ true }
               classImage="rounded-circle"
               defaultImg={ <FontAwesomeIcon icon="user" size="6x" /> }
+              disabled={ isLoading }
             >
               Subir imagen de perfil
             </FileField>
@@ -154,12 +155,12 @@ class FormSignUp extends Component<Props, State> {
                 <>
                   <GradientButton
                     className="mr-3"
-                    variant="ligthBlue-blue"
+                    variant="red-ligthRed"
                     onClick={ () => onCancel() }
                   > 
                     <img 
                       className="login-img-icon" 
-                      src={ link } 
+                      src={ heartPixel } 
                       alt="link zelda" 
                     />
                     <Space spaces={ 2 }/>
@@ -167,14 +168,14 @@ class FormSignUp extends Component<Props, State> {
                   </GradientButton>
 
                   <GradientButton 
-                    variant="green-ligthGreen"
+                    variant="ligthBlue-blue"
                     type="submit"
                     onClick={ () => this.setState({ submit: true }) }
                     disabled={ submitting }
                   >
                     <img 
                       className="login-img-icon" 
-                      src={ bidKey } 
+                      src={ link } 
                       alt="big key" 
                     />
                     <Space spaces={ 2 }/>
@@ -209,6 +210,12 @@ const validate = (values: any) => {
 
   if (!values.phoneNumber) {
     errors.phoneNumber = 'El telefono es requerido';
+  }
+
+  if (values.phoneNumber) {
+    if (values.phoneNumber.includes('_')) {
+      errors.phoneNumber = 'El telefono es requerido';
+    }
   }
 
   if (!values.userName) {
