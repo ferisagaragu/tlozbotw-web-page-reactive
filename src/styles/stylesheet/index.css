@@ -13,6 +13,10 @@
   src: url('../font/MedulaOne-Regular.ttf');
 }
 
+header {
+  background: url('../img/header-card.png');
+}
+
 body {
   margin: 0;
   font-family: 'Nunito', sans-serif;
@@ -60,4 +64,8 @@ h2 {
   animation-duration: 1s;
   animation-iteration-count: initial;
   animation-name: jackInTheBox;
+}
+
+.bm-menu {
+  background: url('../img/header-card.png');
 }

@@ -10,7 +10,7 @@ export class UserModel {
   firstSession: boolean;
   locked: boolean;
   enabled: boolean;
-  roles: Array<String>;
+  roles: Array<string>;
 
   constructor(data: any | UserModel) {
     this.id = 0;

@@ -17,7 +17,11 @@ class LoginService {
       sessionStorage.setItem('type', resp.data.data.type);
       onSuccess(resp.data);
     }).catch(function (error: any) {
-      onError(error.response.data);
+      if (!error.response) {
+        onError({ message: GeneralMessageEnum.SERVER_ERROR });
+      } else {
+        onError(error.response.data);
+      }
     });
   }
 
@@ -31,7 +35,11 @@ class LoginService {
     }).then(function (resp: any) {
       onSuccess(resp.data);
     }).catch(function (error: any) {
-      onError(error.response.data);
+      if (!error.response) {
+        onError({ message: GeneralMessageEnum.SERVER_ERROR });
+      } else {
+        onError(error.response.data);
+      }
     });
   }
 

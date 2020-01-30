@@ -1,5 +1,5 @@
 import React from 'react';
-import App from './modules/App';
+import App from './modules/app';
 import * as serviceWorker from './serviceWorker';
 import { Provider, Router, ReactDOM } from 'reactive';
 import { store } from './config/app.config';

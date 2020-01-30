@@ -1,5 +1,5 @@
 export enum GeneralMessageEnum {
-  SERVER_ERROR = 'Upss hubo un error al subir la foto de perfil'
+  SERVER_ERROR = 'Upss hubo un error en nuestros servidores, intentalo mas tarde'
 }
 
 export enum LoginMessageEnum {

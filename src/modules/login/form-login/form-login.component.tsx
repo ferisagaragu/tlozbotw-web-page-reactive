@@ -60,7 +60,7 @@ class FormLogin extends Component<Props, State> {
           <Field 
             className="form-control"
             name="email"
-            type="email"
+            type="text"
             component={ RenderTextField }
             label="Nombre de usuario, correo electronico o telefono"
             disabled={ isLoading }

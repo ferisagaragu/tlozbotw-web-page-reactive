@@ -25,7 +25,7 @@ class LoginView extends Component<Props, State> {
     super(props);
 
     this.state = {
-      showForm: 0
+      showForm: 1
     };
   }
 
