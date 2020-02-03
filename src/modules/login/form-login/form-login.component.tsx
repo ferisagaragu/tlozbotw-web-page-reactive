@@ -22,7 +22,7 @@ interface Props {
   initialValues: any;
   handleSubmit: any;
   submitting: any;
-  islostPassword: boolean;
+  isLostPassword: boolean;
   isLoading: boolean;
   submitActions: Function;
   onRecoverPassword: Function;
@@ -39,7 +39,7 @@ class FormLogin extends Component<Props, State> {
       handleSubmit, 
       submitActions, 
       submitting, 
-      islostPassword, 
+      isLostPassword, 
       isLoading, 
       onRecoverPassword, 
       onRegist 
@@ -62,7 +62,7 @@ class FormLogin extends Component<Props, State> {
             name="email"
             type="text"
             component={ RenderTextField }
-            label="Nombre de usuario, correo electronico o telefono"
+            label="Nombre de usuario, correo electrónico o teléfono"
             disabled={ isLoading }
           />
 
@@ -76,7 +76,7 @@ class FormLogin extends Component<Props, State> {
           />
 
           {
-            islostPassword &&
+            isLostPassword &&
               <Row className="login-is-danger">
                 <Col className="text-center danger-man-container" md={ 12 }>
                   <img 
@@ -86,7 +86,7 @@ class FormLogin extends Component<Props, State> {
                   />
                 </Col>
                 Es peligroso ir solo...
-                si no recuertas tu contraseña toma esto.
+                si no recuerdas tu contraseña toma esto.
                 <Col className="text-center recover-container" md={ 12 }>
                   <img 
                     className="recover-img" 
@@ -106,7 +106,7 @@ class FormLogin extends Component<Props, State> {
                 <>
                   <GradientButton
                     className="mr-3"
-                    variant="ligthBlue-blue"
+                    variant="lightBlue-blue"
                     onClick={ () => onRegist() }
                   > 
                     <img 
@@ -119,7 +119,7 @@ class FormLogin extends Component<Props, State> {
                   </GradientButton>
 
                   <GradientButton 
-                    variant="green-ligthGreen"
+                    variant="green-lightGreen"
                     type="submit"
                     disabled={ submitting }
                   >
@@ -148,7 +148,7 @@ const validate = (values: any) => {
   }
 
   if (!values.email) {
-    errors.email = 'El nombre de usuario, correo electronico o telefono es requerido'
+    errors.email = 'El nombre de usuario, correo electrónico o teléfono es requerido'
   }
 
   if (!values.password) {

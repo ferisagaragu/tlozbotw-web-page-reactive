@@ -14,7 +14,7 @@ import {
 import LoadingComponent from '../../../shared/loading/loading.component';
 import { FormSignUpReducerEnum } from '../../../core/enums/form-sign-up-reducer.enum';
 import { UserModel } from '../../../core/models/user.model';
-import heartPixel from '../../../styles/img/heart-pixel-emply.png';
+import heartPixel from '../../../styles/img/heart-pixel-empty.png';
 import link from '../../../styles/img/link.png';
 import "./from-sign-up.css";
 
@@ -124,7 +124,7 @@ class FormSignUp extends Component<Props, State> {
             name="phoneNumber"
             type="text"
             component={ RenderMaskField }
-            label="Numero telefonico"
+            label="Numero telefónico"
             disabled={ isLoading }
             mask="+(99) 99-99-99-99-99"
           />
@@ -143,7 +143,7 @@ class FormSignUp extends Component<Props, State> {
             name="email"
             type="email"
             component={ RenderTextField }
-            label="Correo electronico"
+            label="Correo electrónico"
             disabled={ isLoading }
           />
 
@@ -155,7 +155,7 @@ class FormSignUp extends Component<Props, State> {
                 <>
                   <GradientButton
                     className="mr-3"
-                    variant="red-ligthRed"
+                    variant="red-lightRed"
                     onClick={ () => onCancel() }
                   > 
                     <img 
@@ -168,7 +168,7 @@ class FormSignUp extends Component<Props, State> {
                   </GradientButton>
 
                   <GradientButton 
-                    variant="ligthBlue-blue"
+                    variant="lightBlue-blue"
                     type="submit"
                     onClick={ () => this.setState({ submit: true }) }
                     disabled={ submitting }
@@ -209,12 +209,12 @@ const validate = (values: any) => {
   }
 
   if (!values.phoneNumber) {
-    errors.phoneNumber = 'El telefono es requerido';
+    errors.phoneNumber = 'El teléfono es requerido';
   }
 
   if (values.phoneNumber) {
     if (values.phoneNumber.includes('_')) {
-      errors.phoneNumber = 'El telefono es requerido';
+      errors.phoneNumber = 'El teléfono es requerido';
     }
   }
 
@@ -223,7 +223,7 @@ const validate = (values: any) => {
   }
 
   if (!values.email) {
-    errors.email = 'El correo electronico es requerido';
+    errors.email = 'El correo electrónico es requerido';
   }
 
   return errors;

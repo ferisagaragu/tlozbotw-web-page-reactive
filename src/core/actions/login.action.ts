@@ -1,5 +1,5 @@
 import { Action, alert, toast, Firebase, key } from 'reactive';
-import { UserReducerEnum } from '../enums/user-reducer.enum';
+import { LoginReducerEnum } from '../enums/login-reducer.enum';
 import LoginService from '../http/login.service';
 import { UserModel } from '../models/user.model';
 import { setLogin } from './loading.action';
@@ -10,11 +10,11 @@ const loginService: LoginService = new LoginService();
 const firebase: Firebase = new Firebase();
 
 export function setUserData(payload: any): Action {
-  return { type: UserReducerEnum.SET_USER_DATA, payload };
+  return { type: LoginReducerEnum.SET_USER_DATA, payload };
 }
 
-export function setLostPasswor(payload: any): Action {
-  return { type: UserReducerEnum.SET_LOST_PASSWORD, payload };
+export function setLostPassword(payload: any): Action {
+  return { type: LoginReducerEnum.SET_LOST_PASSWORD, payload };
 }
 
 export function login(email:string, password: string): Function {
@@ -24,15 +24,22 @@ export function login(email:string, password: string): Function {
       (userData: any) => {
         const user: UserModel = new UserModel(userData.data);
         dispatch(setUserData(user));
-        dispatch(setLostPasswor(false));
+        dispatch(setLostPassword(false));
         dispatch(setLogin(false));
         toast('success', `Bienvenid@ ${user.userName}`, 'bottom');
       }, (error: any) => {
-        dispatch(setLostPasswor(true));
+        dispatch(setLostPassword(true));
         dispatch(setLogin(false));
         alert('error', error.message, '');
       }
     );
+  }
+}
+
+export function logout(): Function {
+  return async (dispatch: Function) => {
+    dispatch(setUserData(null));
+    toast('info', `Sesión cerrada`, 'bottom');
   }
 }
 

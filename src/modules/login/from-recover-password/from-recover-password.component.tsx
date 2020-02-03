@@ -11,7 +11,7 @@ import {
 import { FormRecoverPasswordReducerEnum } from '../../../core/enums/form-recover-password-reducer.enum';
 import LoadingComponent from '../../../shared/loading/loading.component';
 import shieldPixel from '../../../styles/img/shield-pixel.png';
-import heartPixel from '../../../styles/img/heart-pixel-emply.png';
+import heartPixel from '../../../styles/img/heart-pixel-empty.png';
 import "./from-recover-password.css";
 
 interface Props { 
@@ -37,7 +37,7 @@ class FormRecoverPassword extends Component<Props, State> {
           <Col>
             <b>
               Si has olvidado tu contraseña puedes recuperarla 
-              enviando un codigo de verificacion a tu correo.
+              enviando un código de verificación a tu correo.
             </b>
           </Col>
 
@@ -47,7 +47,7 @@ class FormRecoverPassword extends Component<Props, State> {
               name="email"
               type="email"
               component={ RenderTextField }
-              label="Correo electronico de recuperacion"
+              label="Correo electrónico de recuperación"
               disabled={ isLoading }
             />
           </Col>
@@ -60,20 +60,20 @@ class FormRecoverPassword extends Component<Props, State> {
                 <>
                   <GradientButton
                     className="mr-3"
-                    variant="red-ligthRed"
+                    variant="red-lightRed"
                     onClick={ () => { console.log('cancelo'); onCancel();} }
                   > 
                     <img 
                       className="login-img-icon" 
                       src={ heartPixel } 
-                      alt="heart pixel emply" 
+                      alt="heart pixel empty" 
                     />
                     <Space spaces={ 2 }/>
                     Cancelar
                   </GradientButton>
 
                   <GradientButton 
-                    variant="ligthBlue-purple"
+                    variant="lightBlue-purple"
                     type="submit"
                     disabled={ submitting }
                   >
@@ -102,7 +102,7 @@ const validate = (values: any) => {
   }
 
   if (!values.email) {
-    errors.email = 'El correo electronico es requerido'
+    errors.email = 'El correo electrónico es requerido'
   }
 
   return errors;

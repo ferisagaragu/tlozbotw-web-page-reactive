@@ -1,10 +1,12 @@
 import React, { Component, ReactElement } from 'react';
-import { connect, Header, UserButton, UserOptionItem, Space, Badge } from 'reactive';
+import { connect, Header, UserButton, UserOptionItem, Space, Badge, key } from 'reactive';
 import { navMenu } from '../../declarations/nav-menu.declarations';
 import { UserModel } from '../../core/models/user.model';
+import { logout } from '../../core/actions/login.action';
 
 interface Props { 
   userData: UserModel
+  logout: Function;
 }
 
 interface State { 
@@ -33,7 +35,7 @@ class HeaderView extends Component<Props, State> {
     
     roles.forEach((element: any) => {
       out.push(
-        <>
+        <span key={ key() }>
           <Space />
           <Badge
             variant="info"
@@ -41,7 +43,7 @@ class HeaderView extends Component<Props, State> {
             { element.replace('ROLE_', '') }
           </Badge>
           <Space />
-        </>  
+        </span>
       );
     });
 
@@ -49,22 +51,22 @@ class HeaderView extends Component<Props, State> {
   }
 
   render() {
-    const { userData } = this.props;
+    const { userData, logout } = this.props;
     const { updateUsers } = this.state;
 
     return(
       <Header 
           menuData={ navMenu }
-          left={<></>}
-          center={<></>}
+          left={ <></> }
+          center={ <></> }
           right={
             <UserButton 
               src={ userData.imageUrl }
               title={ userData.userName }
-              onClick={ () => {} }
+              onClick={ () => logout() }
             >
               <UserOptionItem
-                onClick={ () => {} }
+                link=""
               >
                 { `${userData.name} ${userData.lastName}` }                  
                 { this.renderRoles(userData.roles) }
@@ -73,7 +75,7 @@ class HeaderView extends Component<Props, State> {
               {
                 updateUsers &&
                   <UserOptionItem
-                    onClick={ () => {} }
+                    link="/admin-user"
                   >
                     Administrar usuarios
                   </UserOptionItem>
@@ -90,6 +92,8 @@ const mapStateToProps = (state: any) => ({
   userData: state.userData
 });
 
-const mapDispatchToProps = (dispatch: Function) => ({ });
+const mapDispatchToProps = (dispatch: Function) => ({ 
+  logout: () => dispatch(logout())
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(HeaderView);

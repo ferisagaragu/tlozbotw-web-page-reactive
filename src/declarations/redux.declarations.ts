@@ -1,17 +1,19 @@
 import { combineReducers, reducer, windowSize } from 'reactive';
 import { userData, lostPassword } from '../core/reducers/login.reducer';
 import { loading } from '../core/reducers/loading.reducer';
+import { allUsers } from '../core/reducers/admin.reducer';
 
 export const reducers = combineReducers({
   form: reducer,
   windowSize,
   userData,
   lostPassword,
-  loading
+  loading,
+  allUsers 
 });
 
 export const initState = { 
-  /*userData: {
+  userData: {
     "id": 1,
     "name": "Fernando",
     "lastName": "Aguirre",
@@ -28,9 +30,10 @@ export const initState = {
     ],
     "type": "Bearer",
     "token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJmZXJubnlwYXk5NSIsImlhdCI6MTU4MDI3MDk5OSwiZXhwIjoxNTgwMjg4OTk5fQ.Q9prwvvLoYIEettsbV-kJhMy0tN1nXtQrofi9uAqCdsPI7wKLSpvyHneu-2XXVx9EeTuVpyEqpC4IG0toV318A"
-  },*/
-  userData: null,
+  },
+  //userData: null,
   lostPassword: false,
   loading: false,
-  windowSize: "xm"
+  windowSize: "xm",
+  allUsers: null
 };
